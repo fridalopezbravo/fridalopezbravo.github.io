@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Frida Sofía López Bravo</title>
+  <meta name="description" content="Frida Sofía López Bravo — Government and Mathematics at Harvard. Comparative politics, Latin America, and the politics of counting.">
+  <meta property="og:title" content="Frida Sofía López Bravo">
+  <meta property="og:description" content="Government and Mathematics, Harvard University. Comparative politics, Latin America, and the politics of counting.">
+  <meta property="og:image" content="https://fridasofialb.github.io/photo.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #ffffff; --bg-soft: #f4f6f9; --text: #2a2d34; --muted: #6b7280;
+      --rule: #e6e8ec; --accent: #2f6db5;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--bg); color: var(--text);
+           font: 17px/1.65 "Source Serif 4", Georgia, serif; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; text-underline-offset: 3px; }
+    .wrap { max-width: 920px; margin: 0 auto; padding: 0 20px; }
+
+    /* Header: name left, nav right */
+    .site-header { display: flex; justify-content: space-between; align-items: baseline;
+                   flex-wrap: wrap; gap: 8px 24px; padding: 30px 0 16px; border-bottom: 1px solid var(--rule); }
+    .site-name { font: 600 1.7rem/1.1 "Cormorant Garamond", Georgia, serif; color: var(--text); }
+    .site-name:hover { text-decoration: none; }
+    nav { display: flex; flex-wrap: wrap; gap: 4px 22px; }
+    nav a { color: var(--muted); font-size: .95rem; }
+    nav a:hover { color: var(--accent); }
+
+    /* Hero: portrait left, bio right */
+    .hero { display: grid; grid-template-columns: 240px 1fr; gap: 48px; padding: 52px 0 20px; }
+    .portrait { width: 240px; aspect-ratio: 4 / 5; border-radius: 4px; overflow: hidden;
+                background: var(--bg-soft); display: grid; place-items: center; }
+    .portrait img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .initials { font: 500 3.2rem "Cormorant Garamond", serif; color: var(--muted); letter-spacing: .05em; }
+    .card h1 { font: 600 1.3rem/1.3 "Source Serif 4", serif; margin: 18px 0 2px; }
+    .card .role { color: var(--muted); font-size: .95rem; line-height: 1.45; margin: 0 0 14px; }
+    .card ul { list-style: none; padding: 0; margin: 0; font-size: .95rem; }
+    .card li { padding: 3px 0; }
+    .bio p:first-child { margin-top: 0; }
+
+    /* Sections */
+    section.block { padding: 28px 0 4px; border-top: 1px solid var(--rule); margin-top: 28px; }
+    h2 { font: 600 1.6rem/1.2 "Cormorant Garamond", Georgia, serif; margin: 0 0 18px; }
+    h2 small { font: italic 400 .95rem "Source Serif 4", serif; color: var(--muted); margin-left: 10px; }
+    .entry { margin-bottom: 22px; }
+    .entry h3 { font-size: 1.05rem; font-weight: 600; margin: 0; }
+    .entry .meta { color: var(--muted); font-size: .92rem; font-style: italic; margin: 2px 0 6px; }
+    .entry p { margin: 0 0 6px; }
+
+    /* Date-column rows, like the CV */
+    .rows { display: grid; grid-template-columns: 130px 1fr; gap: 10px 20px; }
+    .rows .when { color: var(--muted); font-size: .92rem; padding-top: 2px; }
+    .rows .what strong { font-weight: 600; }
+    .rows .what .sub { color: var(--muted); font-size: .94rem; }
+
+    .interests { display: grid; grid-template-columns: 130px 1fr; gap: 6px 20px; margin-bottom: 26px; }
+    .interests dt { color: var(--muted); font-size: .92rem; padding-top: 2px; }
+    .interests dd { margin: 0; }
+
+    footer { border-top: 1px solid var(--rule); margin-top: 48px; padding: 18px 0 40px;
+             color: var(--muted); font-size: .82rem; }
+
+    @media (max-width: 720px) {
+      .hero { grid-template-columns: 1fr; gap: 28px; padding-top: 36px; }
+      .portrait { width: 200px; }
+      .rows, .interests { grid-template-columns: 1fr; gap: 2px; }
+      .rows .what, .interests dd { margin-bottom: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="site-header">
+      <a class="site-name" href="#">Frida Sofía López Bravo</a>
+      <nav aria-label="Main">
+        <a href="#about">About</a>
+        <a href="#research">Research</a>
+        <a href="#experience">Experience</a>
+        <a href="#teaching">Teaching</a>
+        <a href="cv.pdf">CV</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" id="about">
+        <aside class="card" aria-label="Profile">
+          <div class="portrait">
+            <img src="photo.jpg" alt="Portrait of Frida Sofía López Bravo" width="720" height="900"
+                 onerror="this.remove(); document.getElementById('initials').hidden = false;">
+            <span class="initials" id="initials" hidden>FLB</span>
+          </div>
+          <h1>Frida Sofía López Bravo</h1>
+          <p class="role">A.B. Candidate in Government and Mathematics<br>Harvard University</p>
+          <ul>
+            <li><a href="mailto:fridalopezbravo@college.harvard.edu">Email</a></li>
+            <li><a href="cv.pdf">CV</a></li>
+            <li><a href="https://github.com/fridasofialb">GitHub</a></li>
+          </ul>
+        </aside>
+
+        <div class="bio">
+          <p>Welcome! I am a senior at Harvard University studying Government and Mathematics.
+            I work in comparative politics with a regional focus on Latin America.</p>
+          <p>My current research is about the politics of counting. I study why states that have
+            the capacity to measure something, and are required to, sometimes choose not to measure
+            it well, especially when accurate numbers would expose their own failures. My senior
+            thesis examines this question through Mexico’s national registry of the disappeared.
+            I am also interested in state building and weak institutions, forbearance, and crimes
+            committed by the state. I use quantitative and mixed methods, from web scraping and
+            statistical modeling to archival research and interviews.</p>
+          <p>I grew up in Mexico City and speak Spanish, English, French and Portuguese.</p>
+        </div>
+      </section>
+
+      <section class="block" id="research">
+        <h2>Research</h2>
+
+        <dl class="interests">
+          <dt>Field</dt><dd>Comparative politics, Latin America</dd>
+          <dt>Topics</dt><dd>The politics of counting and information institutions; state building and weak institutions; forbearance; crimes committed by the state</dd>
+          <dt>Methods</dt><dd>Quantitative and mixed methods</dd>
+        </dl>
+
+        <div class="entry">
+          <h3>To Disappear Twice: Politics of Counting Around Forced Disappearances in Mexico</h3>
+          <div class="meta">Senior thesis, 2026–2027 · Advisor: Yanilda González</div>
+          <p>I explain why Mexico's national registry of the disappeared remains unreliable despite
+            a legal mandate and sustained domestic and international pressure. I argue that registry
+            opacity is politically produced: where accurate data would expose state failure, officials
+            sustain <em>managed legibility</em> through politically mediated capacity constraints,
+            strategic non-enforcement, and administrative blockage.</p>
+          <p class="meta" style="font-style:normal">Data: an original panel of weekly registry scrapes,
+            freedom-of-information requests, and elite and civil society interviews.</p>
+        </div>
+      </section>
+
+      <section class="block" id="experience">
+        <h2>Research Experience</h2>
+        <div class="rows">
+          <div class="when">2026 – present</div>
+          <div class="what"><strong>Research Assistant to Professor Yanilda González</strong>, Harvard University<br>
+            <span class="sub">Data analysis for a project on police violence in Latin America.</span></div>
+
+          <div class="when">Summer 2026</div>
+          <div class="what"><strong>Data Analysis and Research Intern</strong>, Save the Children, New York<br>
+            <span class="sub">Harmonized and analyzed cross-country education data in R and Python for the IDELA database.</span></div>
+
+          <div class="when">Fall 2025</div>
+          <div class="what"><strong>Research Assistant to Professor Alisha Holland</strong>, Harvard University<br>
+            <span class="sub">Data collection and comparative research on populist bureaucratic reform in the United States and Argentina.</span></div>
+
+          <div class="when">2025 – present</div>
+          <div class="what"><strong>Data Analyst and Researcher</strong>, Data Cívica, Mexico City<br>
+            <span class="sub">Statistical and research tools for projects on forced disappearances and femicide in Mexico.</span></div>
+
+          <div class="when">2024 – 2025</div>
+          <div class="what"><strong>Radcliffe Research Partner to Professor Paulo Fontes</strong>, Radcliffe Institute for Advanced Study<br>
+            <span class="sub">Archival research on labor unions and racial democracy in Brazil.</span></div>
+        </div>
+      </section>
+
+      <section class="block" id="teaching">
+        <h2>Teaching</h2>
+        <div class="rows">
+          <div class="when">Fall 2026</div>
+          <div class="what"><strong>Course Assistant</strong>, Gov 50: Data Science for the Social Sciences</div>
+          <div class="when">Fall 2026</div>
+          <div class="what"><strong>Course Assistant</strong>, Phil 4: Logic I</div>
+        </div>
+      </section>
+
+      <section class="block" id="awards">
+        <h2>Grants &amp; Awards</h2>
+        <div class="rows">
+          <div class="when">2026</div><div class="what">Moral Ambition University Fellowship <span class="sub">(one of 12 Harvard juniors)</span></div>
+          <div class="when">2026</div><div class="what">Summer Research Travel Grant, David Rockefeller Center for Latin American Studies</div>
+          <div class="when">2026</div><div class="what">Summer Research Funding, Harvard College Research Program</div>
+          <div class="when">2025</div><div class="what">Summer Service Stipend, Institute of Politics</div>
+        </div>
+      </section>
+
+      <section class="block" id="service">
+        <h2>Service</h2>
+        <div class="rows">
+          <div class="when">2024 – present</div>
+          <div class="what"><strong>Co-President</strong>, Harvard Association Cultivating Inter-American Democracy (HACIA)<br>
+            <span class="sub">Annual democracy conference for 350+ high school students from across Latin America. <a href="https://haciademocracy.org">haciademocracy.org</a></span></div>
+        </div>
+      </section>
+
+      <section class="block" id="education">
+        <h2>Education</h2>
+        <div class="rows">
+          <div class="when">2023 – 2027</div>
+          <div class="what"><strong>Harvard University</strong><br><span class="sub">A.B. in Government and Mathematics (expected)</span></div>
+          <div class="when">2019 – 2023</div>
+          <div class="what"><strong>Lycée Franco-Mexicain</strong>, Mexico City<br>
+            <span class="sub">French Baccalauréat (Mathematics and Engineering Sciences) and Mexican diploma. Full scholarship from the French and Mexican governments; top 10, French Mathematics Olympiad.</span></div>
+        </div>
+      </section>
+    </main>
+
+    <footer>© 2026 Frida Sofía López Bravo · Last updated November 2026</footer>
+  </div>
+</body>
+</html>
